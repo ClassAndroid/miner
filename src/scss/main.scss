@@ -4,18 +4,19 @@ body {
 }
 
 .square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
     height: 34px;
+    width: 34px;
+    min-width: 34px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
+    border: 1px solid #999;
     text-align: center;
-    width: 34px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    background: #fff;
+    float: left;
 }
 
 .game {

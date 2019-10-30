@@ -42,23 +42,22 @@ class Game extends Component {
     conversionToArray (str) {
         let arr = str.split('\n');
         arr.shift();
-        let result = arr.map((row) => row.split(''));
-        let mn = result.map((row, y) =>
-            row.map((element, x) => {
-                let status = (isFinite(element) || element === '*') ? 'open' : 'close';
-                let possibility = isFinite(element)? 0 : null;
-                return {
-                    possibility: possibility,
-                    x: x,
-                    y: y,
-                    value: element,
-                    status: status
-                }
-            })
-        ).filter((arr) => arr.length);
+        let matrix = arr.map((row) => row.split(''));
+        let result = matrix.map((row, y) =>
+                row.map((element, x) => {
+                    let status = (isFinite(element) || element === '*') ? 'open' : 'close';
+                    let possibility = isFinite(element)? 0 : null;
+                    return {
+                        possibility: possibility,
+                        x: x,
+                        y: y,
+                        value: element,
+                        status: status
+                    }
+                })
+            ).filter((arr) => arr.length);
 
-        let auto = assignProbabilitiesAround(mn, this.state.resolution);
-        return auto;
+        return assignProbabilitiesAround(result);
     }
 
     save(result) {
