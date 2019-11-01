@@ -67,10 +67,12 @@ class Game extends Component {
     render() {
         return (
             <div>
-                <Button level={1} ws={this.state.ws} />
-                <Button level={2} ws={this.state.ws} />
-                <Button level={3} ws={this.state.ws} />
-                <Button level={4} ws={this.state.ws} />
+                <div className='levels'>
+                    <Button level={1} ws={this.state.ws} />
+                    <Button level={2} ws={this.state.ws} />
+                    <Button level={3} ws={this.state.ws} />
+                    <Button level={4} ws={this.state.ws} />
+                </div>
                 <div>
                     <Board ws={this.state.ws} map={this.state.map} />
                 </div>
