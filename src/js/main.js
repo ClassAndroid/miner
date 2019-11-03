@@ -10,7 +10,8 @@ class Game extends Component {
         super(props);
         this.state = {
             ws: null,
-            map: []
+            map: [],
+            prevState: ''
         }
     }
 
@@ -29,8 +30,10 @@ class Game extends Component {
             console.log(`[message] newSession: ${event.data}`);
 
             if (event.data.indexOf('map:') !== -1) {
+                if (this.state.prevState === event.data) return;
+
                 let result = this.conversionToArray(event.data);
-                this.save(result);
+                this.save(result, event.data);
             }
         };
 
@@ -44,24 +47,27 @@ class Game extends Component {
         arr.shift();
         let matrix = arr.map((row) => row.split(''));
         let result = matrix.map((row, y) =>
-                row.map((element, x) => {
-                    let status = (isFinite(element) || element === '*') ? 'open' : 'close';
-                    let possibility = isFinite(element)? 0 : null;
-                    return {
-                        possibility: possibility,
-                        x: x,
-                        y: y,
-                        value: element,
-                        status: status
-                    }
-                })
-            ).filter((arr) => arr.length);
+            row.map((element, x) => {
+                let status = (isFinite(element) || element === '*') ? 'open' : 'close';
+                let possibility = isFinite(element)? 0 : null;
+                return {
+                    possibility: possibility,
+                    x: x,
+                    y: y,
+                    value: element,
+                    status: status
+                }
+            })
+        ).filter((arr) => arr.length);
 
         return assignProbabilitiesAround(result, this.state.ws);
     }
 
-    save(result) {
-        this.setState({map: result});
+    save(result, prevState) {
+        this.setState({
+            map: result,
+            prevState: prevState
+        });
     }
 
     render() {
@@ -82,5 +88,5 @@ class Game extends Component {
 }
 
 ReactDOM.render(<Game />,
-document.getElementById('root')
+    document.getElementById('root')
 );

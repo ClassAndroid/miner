@@ -2,13 +2,11 @@ function canOpen(elem) {
     return elem.status === 'close' && elem.value !== 'F';
 }
 
-function getNewMap (arr, ws) {
+function openSquares (arr, ws) {
     arr.forEach((elem) => {
         let command = 'open ' + elem.x + ' ' + elem.y;
         ws.send(command);
     });
-
-    ws.send('map');
 }
 
 export default function (arr, y, x, bombCounter, ws) {
@@ -71,7 +69,7 @@ export default function (arr, y, x, bombCounter, ws) {
 
         //left
         if (arr[y][x-1] !== undefined
-         && canOpen(arr[y][x-1])) {
+            && canOpen(arr[y][x-1])) {
             arrSquares.push({
                 y: y,
                 x: x-1
@@ -80,13 +78,15 @@ export default function (arr, y, x, bombCounter, ws) {
 
         //rigth
         if (arr[y][x+1] !== undefined
-         && canOpen(arr[y][x+1])) {
+            && canOpen(arr[y][x+1])) {
             arrSquares.push({
                 y: y,
                 x: x+1
             });
         }
 
-        arrSquares.length && getNewMap(arrSquares, ws);
+        arrSquares.length
+            ? openSquares(arrSquares, ws)
+            : ws.send('map');
     }
 }
