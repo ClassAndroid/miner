@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 function canOpen(elem) {
-=======
-function canClick(elem) {
->>>>>>> d2a5890... refaktoring
     return elem.status === 'close' && elem.value !== 'F';
 }
 
@@ -22,11 +18,7 @@ export default function (arr, y, x, bombCounter, ws) {
         //top
         if (arr[y-1] !== undefined) {
             //top center
-<<<<<<< HEAD
             if (canOpen(arr[y-1][x])) {
-=======
-            if (canClick(arr[y-1][x])) {
->>>>>>> d2a5890... refaktoring
                 arrSquares.push({
                     y: y-1,
                     x: x
@@ -34,11 +26,7 @@ export default function (arr, y, x, bombCounter, ws) {
             }
 
             //top left
-<<<<<<< HEAD
             if (arr[y-1][x-1] && canOpen(arr[y-1][x-1])) {
-=======
-            if (arr[y-1][x-1] && canClick(arr[y-1][x-1])) {
->>>>>>> d2a5890... refaktoring
                 arrSquares.push({
                     y: y-1,
                     x: x-1
@@ -46,11 +34,7 @@ export default function (arr, y, x, bombCounter, ws) {
             }
 
             //top rigth
-<<<<<<< HEAD
             if (arr[y-1][x+1] && canOpen(arr[y-1][x+1])) {
-=======
-            if (arr[y-1][x+1] && canClick(arr[y-1][x+1])) {
->>>>>>> d2a5890... refaktoring
                 arrSquares.push({
                     y: y-1,
                     x: x+1
@@ -61,11 +45,7 @@ export default function (arr, y, x, bombCounter, ws) {
         //bottom
         if (arr[y + 1] !== undefined) {
             //bottom center
-<<<<<<< HEAD
             if (canOpen(arr[y + 1][x])) {
-=======
-            if (canClick(arr[y + 1][x])) {
->>>>>>> d2a5890... refaktoring
                 arrSquares.push({
                     y: y+1,
                     x: x
@@ -73,11 +53,7 @@ export default function (arr, y, x, bombCounter, ws) {
             }
 
             //bottom left
-<<<<<<< HEAD
             if (arr[y+1][x-1] && canOpen(arr[y+1][x-1])) {
-=======
-            if (arr[y+1][x-1] && canClick(arr[y+1][x-1])) {
->>>>>>> d2a5890... refaktoring
                 arrSquares.push({
                     y: y+1,
                     x: x-1
@@ -85,11 +61,7 @@ export default function (arr, y, x, bombCounter, ws) {
             }
 
             //bottom rigth
-<<<<<<< HEAD
             if (arr[y+1][x+1] && canOpen(arr[y+1][x+1])) {
-=======
-            if (arr[y+1][x+1] && canClick(arr[y+1][x+1])) {
->>>>>>> d2a5890... refaktoring
                 arrSquares.push({
                     y: y+1,
                     x: x+1
@@ -99,11 +71,7 @@ export default function (arr, y, x, bombCounter, ws) {
 
         //left
         if (arr[y][x-1] !== undefined
-<<<<<<< HEAD
          && canOpen(arr[y][x-1])) {
-=======
-         && canClick(arr[y][x-1])) {
->>>>>>> d2a5890... refaktoring
             arrSquares.push({
                 y: y,
                 x: x-1
@@ -112,11 +80,7 @@ export default function (arr, y, x, bombCounter, ws) {
 
         //rigth
         if (arr[y][x+1] !== undefined
-<<<<<<< HEAD
          && canOpen(arr[y][x+1])) {
-=======
-         && canClick(arr[y][x+1])) {
->>>>>>> d2a5890... refaktoring
             arrSquares.push({
                 y: y,
                 x: x+1
