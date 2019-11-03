@@ -29,6 +29,10 @@ class Game extends Component {
         ws.onmessage = (event) => {
             console.log(`[message] newSession: ${event.data}`);
 
+            if (event.data.indexOf('You win.') !== -1) {
+                alert(event.data);
+            }
+
             if (event.data.indexOf('map:') !== -1) {
                 if (this.state.prevState === event.data) return;
 
@@ -38,6 +42,7 @@ class Game extends Component {
         };
 
         ws.onerror = err => {
+            alert(err);
             ws.close();
         };
     };

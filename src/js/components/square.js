@@ -26,9 +26,18 @@ class Square extends Component {
         this.state.ws.send('map');
     }
 
+    AssignClass (elem) {
+        let className = 'square';
+
+        if (elem.value === 'F') {
+            className += ' red';
+        }
+         return className + ' ' + elem.status;
+    }
+
     render() {
         let id = this.state.x + 'y' + this.state.y;
-        let className = this.props.element.value === 'F' ? 'square red' : 'square';
+        let className = this.AssignClass(this.props.element);
 
         return (
             <div onClick={() => this.OpenSquare()} id={id} className={className}>{this.props.element.value}</div>
