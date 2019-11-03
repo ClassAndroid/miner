@@ -57,7 +57,7 @@ class Game extends Component {
                 })
             ).filter((arr) => arr.length);
 
-        return assignProbabilitiesAround(result);
+        return assignProbabilitiesAround(result, this.state.ws);
     }
 
     save(result) {

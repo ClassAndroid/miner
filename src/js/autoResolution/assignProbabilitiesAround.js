@@ -1,9 +1,9 @@
 import findDivisor from "./findDivisor";
 import findPossibility from "./findPossibility";
 import markBomb from "./markBomb";
-import clickAround from "./clickAround";
+import openAround from "./openAround";
 
-export default function (arr) {
+export default function (arr, ws) {
     return arr.map((row, y) =>
         row.map((elem, x) => {
             let divisor = findDivisor(arr, y, x);
@@ -87,7 +87,7 @@ export default function (arr) {
                 }
             }
 
-            clickAround (arr, y, x, bombCounter);
+            openAround (arr, y, x, bombCounter, ws);
 
             return elem;
         })
