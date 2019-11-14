@@ -85,8 +85,9 @@ export default function (arr, y, x, bombCounter, ws) {
             });
         }
 
-        arrSquares.length
-            ? openSquares(arrSquares, ws)
-            : ws.send('map');
+        if (arrSquares.length) {
+            openSquares(arrSquares, ws);
+            ws.send('map');
+        }
     }
 }
